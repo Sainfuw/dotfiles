@@ -1,0 +1,194 @@
+{
+  "Next Server Side Props": {
+    "prefix": "nextServerSideProps",
+    "body": [
+      "export const getServerSideProps: GetServerSideProps = async (ctx) => {",
+      "  const { data } = await // your fetch function here",
+      "",
+      "  return {",
+      "		 props: {",
+      "	   }",
+      "  }",
+      "}"
+    ],
+    "description": "Next Server Side Props"
+  },
+
+  "React Function Native": {
+    "prefix": "rfn",
+    "body": [
+      "import React from 'react';",
+      "import {View, StyleSheet, Text} from 'react-native';",
+      "",
+      "export const ${TM_FILENAME_BASE} = () => {",
+      "	return (",
+      "		<View>",
+      "			<Text>${TM_FILENAME_BASE}</Text>",
+      "		</View>",
+      "	)",
+      "}",
+      "",
+      "const styles = StyleSheet.create({})"
+    ],
+    "description": "React Function Native"
+  },
+
+  "Next Funcion Component with default": {
+    "prefix": "rfcd",
+    "body": [
+      "import { NextPage } from 'next'",
+      "",
+      "interface Props {}",
+      "",
+      "const ${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}Page: NextPage<Props> = () => {",
+      "	return (",
+      "		<>",
+      "			<h4>$1${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}Page</h4>",
+      "		</>",
+      "	)",
+      "}",
+      "",
+      "export default ${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}Page;"
+    ],
+    "description": "Next Funcion Component"
+  },
+
+  "React Function Component Next": {
+    "prefix": "rfcn",
+    "body": [
+      "import { NextPage } from 'next'",
+      "",
+      "interface Props {}",
+      "",
+      "export const ${TM_FILENAME_BASE}: NextPage<Props> = () => {",
+      "	return (",
+      "		<>",
+      "			<h4>${TM_FILENAME_BASE}</h4>",
+      "		</>",
+      "	)",
+      "}"
+    ],
+    "description": "React Function Component Next"
+  },
+
+  "React Function Component": {
+    "prefix": "rfc",
+    "body": [
+      "export const ${TM_FILENAME_BASE} = () => {",
+      "	return (",
+      "		<>",
+      "			<h4>${TM_FILENAME_BASE}</h4>",
+      "		</>",
+      "	)",
+      "}"
+    ],
+    "description": "React Function Component"
+  },
+
+  "React Custom Context": {
+    "prefix": "reactcontext",
+    "body": [
+      "import { createContext } from 'react'",
+      "",
+      "interface ContextProps {",
+      "	${1}",
+      "}",
+      "",
+      "export const ${TM_FILENAME_BASE} = createContext({} as ContextProps);"
+    ],
+    "description": "React Custom Context"
+  },
+
+  "React Custom Reducer": {
+    "prefix": "reactreducer",
+    "body": [
+      "import { ${1:NameUpper}State } from './'",
+      "",
+      "type $1ActionType = ",
+      "	| { type: '@${2:NameLower}/${3:FirstAction}' }",
+      "	| { type: '@$2/${4:SecondAxtion}' }",
+      "",
+      "export const $2Reducer = (state: $1State, action: $1ActionType): $1State => {",
+      "	switch (action.type) {",
+      "		case '@$2/$3':",
+      "			return {",
+      "				...state,",
+      "				${5:StateChanger}: ${6:Value},",
+      "			};",
+      "		case '@$2/$4':",
+      "			return {",
+      "				...state,",
+      "				$5: ${7:Value},",
+      "			};",
+      "		default:",
+      "			return state;",
+      "	}",
+      "}"
+    ],
+    "description": "React Custom Reducer"
+  },
+
+  "React content index file": {
+    "prefix": "reactbarrel",
+    "body": [
+      "export * from './${1:NameUpper}Context'",
+      "export * from './$1Provider'",
+      "export * from './${2:NameLower}Reducer'"
+    ],
+    "description": "React content index file"
+  },
+
+  "React Provider": {
+    "prefix": "reactprovider",
+    "body": [
+      "import { useReducer } from 'react'",
+      "import { NextPage } from 'next'",
+      "",
+      "import { ${1:Name}Context, ${2:NameLower}Reducer } from './'",
+      "",
+      "export interface $1State {",
+      "	${3:Prop}: ${4:Type}",
+      "}",
+      "",
+      "const $1_INITIAL_STATE: $1State = {",
+      "	$3: ${5:Value}",
+      "}",
+      "",
+      "export const ${TM_FILENAME_BASE}: NextPage = ({ children }) => {",
+      "	const [state, dispatch] = useReducer($2Reducer, $1_INITIAL_STATE);",
+      "",
+      "	return (",
+      "		<$1Context.Provider value={{ ...state }}>",
+      "			{children}",
+      "		</$1Context.Provider>",
+      "	)",
+      "}"
+    ],
+    "description": "React Provider"
+  },
+
+  "Import component": {
+    "prefix": "imr",
+    "body": ["import { ${1} } from './${1}'"],
+    "description": "Import component"
+  },
+
+  "Snippet for next api": {
+    "prefix": "nextApi",
+    "body": [
+      "import type { NextApiRequest, NextApiResponse } from 'next'",
+      "",
+      "type Data = {",
+      "	message: string",
+      "}",
+      "",
+      "export default function handler(",
+      "	req: NextApiRequest,",
+      "	res: NextApiResponse<Data>",
+      ") {",
+      "	res.status(200).json({ message: 'test' })",
+      "}"
+    ],
+    "description": "Snippet for next api"
+  }
+}
